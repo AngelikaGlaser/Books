@@ -1,5 +1,7 @@
 const formEl = document.querySelector('#add-book')
 formEl.addEventListener('submit', addBook)
+const booksrow = document.querySelector('#table')
+booksrow.addEventListener('click', deleteBook)
 
 function addBook(event) {
 
@@ -22,4 +24,12 @@ function addBook(event) {
     event.preventDefault()
 
    document.getElementById('table').innerHTML += TableData;
+}
+
+function deleteBook(event) {
+    if (event.target.classList.contains('secondary-content')) {
+        if (confirm('Do you really want to delete this?')) {
+            event.target.closest('tr').remove()
+        }
+    }
 }
